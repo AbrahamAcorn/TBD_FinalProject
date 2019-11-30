@@ -19,7 +19,8 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         setResizable(false);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Images/iconmain.png")));
+        //setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Images/iconmain.png")));
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -38,7 +39,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         cajaPasword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +49,6 @@ public class InicioSesion extends javax.swing.JFrame {
         cajaUsuario.setBackground(new java.awt.Color(204, 255, 255));
         cajaUsuario.setForeground(new java.awt.Color(0, 0, 0));
 
-        jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Log In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,11 +65,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuario:");
 
-        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
+        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.color2"));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Cancelar");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user-icon-blue-48234.png"))); // NOI18N
 
         cajaPasword.setBackground(new java.awt.Color(204, 255, 255));
         cajaPasword.setText("jPasswordField1");
@@ -79,12 +76,8 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel3)
-                .addGap(0, 56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -104,9 +97,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(264, 264, 264)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cajaUsuario)
@@ -140,7 +131,7 @@ public class InicioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
          char[] contra = cajaPasword.getPassword();
          String s="";
-         for(int i=0; i < contra.length; i++){
+         for(int i=0; i <= contra.length; i++){
              s=s+contra[i];
          }
         if (cajaUsuario.getText()=="pepe"&& s=="pepe"){
@@ -195,7 +186,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

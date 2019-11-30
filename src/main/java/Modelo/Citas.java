@@ -10,104 +10,40 @@ package Modelo;
  * @author Abraham
  */
 public class Citas {
-    private int idcita;
-    private int idpac;
-    private String nompac;
-    private String ap1pac;
-    private String ap2pac;
-    private int iddoc;
-    private String nombdoc;
-    private String ap1doc;
-    private String ap2doc;
+    private int paciente;
+    private int doctor;
     private String fecha;
     private String hora;
-    private String depto;
+    private int consul;
+    private int dept;
 
-    public Citas(int idcita, int idpac, String nompac, String ap1pac, String ap2pac, int iddoc, String nombdoc, String ap1doc, String ap2doc, String fecha, String hora, String depto) {
-        this.idcita = idcita;
-        this.idpac = idpac;
-        this.nompac = nompac;
-        this.ap1pac = ap1pac;
-        this.ap2pac = ap2pac;
-        this.iddoc = iddoc;
-        this.nombdoc = nombdoc;
-        this.ap1doc = ap1doc;
-        this.ap2doc = ap2doc;
+    public Citas(int paciente, int doctor, String fecha, String hora, int consul, int dept) {
+        this.paciente = paciente;
+        this.doctor = doctor;
         this.fecha = fecha;
         this.hora = hora;
-        this.depto = depto;
+        this.consul = consul;
+        this.dept = dept;
     }
 
-    public int getIdcita() {
-        return idcita;
+    public Citas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setIdcita(int idcita) {
-        this.idcita = idcita;
+    public int getPaciente() {
+        return paciente;
     }
 
-    public int getIdpac() {
-        return idpac;
+    public void setPaciente(int paciente) {
+        this.paciente = paciente;
     }
 
-    public void setIdpac(int idpac) {
-        this.idpac = idpac;
+    public int getDoctor() {
+        return doctor;
     }
 
-    public String getNompac() {
-        return nompac;
-    }
-
-    public void setNompac(String nompac) {
-        this.nompac = nompac;
-    }
-
-    public String getAp1pac() {
-        return ap1pac;
-    }
-
-    public void setAp1pac(String ap1pac) {
-        this.ap1pac = ap1pac;
-    }
-
-    public String getAp2pac() {
-        return ap2pac;
-    }
-
-    public void setAp2pac(String ap2pac) {
-        this.ap2pac = ap2pac;
-    }
-
-    public int getIddoc() {
-        return iddoc;
-    }
-
-    public void setIddoc(int iddoc) {
-        this.iddoc = iddoc;
-    }
-
-    public String getNombdoc() {
-        return nombdoc;
-    }
-
-    public void setNombdoc(String nombdoc) {
-        this.nombdoc = nombdoc;
-    }
-
-    public String getAp1doc() {
-        return ap1doc;
-    }
-
-    public void setAp1doc(String ap1doc) {
-        this.ap1doc = ap1doc;
-    }
-
-    public String getAp2doc() {
-        return ap2doc;
-    }
-
-    public void setAp2doc(String ap2doc) {
-        this.ap2doc = ap2doc;
+    public void setDoctor(int doctor) {
+        this.doctor = doctor;
     }
 
     public String getFecha() {
@@ -126,12 +62,20 @@ public class Citas {
         this.hora = hora;
     }
 
-    public String getDepto() {
-        return depto;
+    public int getConsul() {
+        return consul;
     }
 
-    public void setDepto(String depto) {
-        this.depto = depto;
+    public void setConsul(int consul) {
+        this.consul = consul;
+    }
+
+    public int getDept() {
+        return dept;
+    }
+
+    public void setDept(int dept) {
+        this.dept = dept;
     }
     
     

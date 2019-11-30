@@ -18,7 +18,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         setResizable(false);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Images/iconmain.png")));
+        //setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Images/iconmain.png")));
         initComponents();
     }
 
@@ -31,44 +31,46 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        cajaAp2p = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        cajaAp1p = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        tel3 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cajacalle = new javax.swing.JTextField();
         cajaNp = new javax.swing.JTextField();
         cajacol = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPacientes = new javax.swing.JTable();
-        cajanum = new javax.swing.JTextField();
-        cajacalle = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        tel3 = new javax.swing.JTextField();
         tel2 = new javax.swing.JTextField();
-        cajaID = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         tel1 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        cajanum = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        cajaID = new javax.swing.JTextField();
+        cajaAp2p = new javax.swing.JTextField();
+        cajaAp1p = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla_paciente = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaInternos = new javax.swing.JTable();
+        jLabel30 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         cajaAp2D = new javax.swing.JTextField();
         cajaAp1D1 = new javax.swing.JTextField();
-        nombreDoc = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -76,24 +78,66 @@ public class Main extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox<>();
-        jButton11 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        nombreDoc = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        cajaAp2p1 = new javax.swing.JTextField();
+        cajaAp1p1 = new javax.swing.JTextField();
+        cajaNp1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cajaID1 = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        cajaAp2D1 = new javax.swing.JTextField();
+        cajaAp1D2 = new javax.swing.JTextField();
+        nombreDoc1 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        cajaID3 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPanel4 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(196, 226, 247));
         setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1170, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 120, -1));
-        getContentPane().add(cajaAp2p, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 110, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Internos");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 220, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DeAlta", "Internado", "Revision", "Citado" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 130, -1));
 
         jButton1.setText("Añade Paciente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,180 +145,312 @@ public class Main extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 130, 30));
-
-        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("ToolBar.light"));
-        jButton2.setText("Dar de Alta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 130, 30));
-        getContentPane().add(cajaAp1p, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 110, -1));
-
-        jButton5.setText("Edita Paciente");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 130, 30));
-
-        jButton6.setText("Busca Paciente");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 130, 30));
-
-        jButton3.setText("Elimina Paciente");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 130, 30));
-        getContentPane().add(cajaNp, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 130, -1));
-        getContentPane().add(cajacol, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 120, -1));
-
-        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaPacientes);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 790, 100));
-        getContentPane().add(cajanum, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 50, -1));
-        getContentPane().add(cajacalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 80, -1));
-
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Apellidos:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 80, 20));
-
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Direccion:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 80, 20));
-
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("-");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 10, 20));
-
-        jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Estado:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 60, 20));
-
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Habitacion:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 20));
-
-        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("ID Paciente");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 90, 20));
-
-        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Genero:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 60, 20));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 130, 30));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nombre:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 60, 20));
-        getContentPane().add(tel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 50, -1));
-        getContentPane().add(tel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 40, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
 
-        cajaID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaIDActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cajaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 40, -1));
+        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Genero:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 60, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DeAlta", "Internado", "Revision", "Citado" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 130, -1));
+        jButton5.setText("Edita Paciente");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 130, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 130, -1));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("-");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 10, 20));
+        jPanel1.add(tel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 50, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 290, -1));
+        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("-");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 10, 20));
+        jPanel1.add(cajacalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 80, -1));
+        jPanel1.add(cajaNp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 130, -1));
+        jPanel1.add(cajacol, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 120, -1));
 
-        jButton4.setText("Estadistica");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 170, -1));
+        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Habitacion:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 20));
+        jPanel1.add(tel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 40, -1));
 
-        jButton7.setText("Reporte Citas");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 170, -1));
-
-        jButton10.setText("Reporte Doctores");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 170, -1));
-
-        jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Sala:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 60, 20));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergencias", "Consultorios Seccion 1", "Laboratorios", "Sala de Partos", "Terapia Intensiva", "Consultorios Seccion 2", "Terapia Fisica" }));
+        jComboBox3.setBorder(null);
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 290, -1));
 
         tel1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tel1ActionPerformed(evt);
             }
         });
-        getContentPane().add(tel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 40, -1));
+        jPanel1.add(tel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 40, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 120, -1));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("ID Paciente");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 90, 20));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Estado:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 60, 20));
+
+        jButton3.setText("Elimina Paciente");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 130, 30));
+        jPanel1.add(cajanum, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 50, -1));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Apellidos:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, 20));
+
+        jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Sala:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 60, 20));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 130, -1));
+
+        cajaID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaIDActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cajaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 40, -1));
+        jPanel1.add(cajaAp2p, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 110, -1));
+        jPanel1.add(cajaAp1p, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 110, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Telefono");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 80, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 80, 20));
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("-");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 10, 20));
-        getContentPane().add(cajaAp2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 150, 110, -1));
-        getContentPane().add(cajaAp1D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 150, 110, -1));
-        getContentPane().add(nombreDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 90, 130, -1));
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Direccion:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 80, 20));
+
+        jButton13.setText("Dar de Alta");
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 130, -1));
+
+        tabla_paciente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "idPaciente", "Nombre", "PrimAp", "SegAp", "Colonia", "Calle", "Num", "Telefono", "Estado", "Genero", "Habitacion", "Sala"
+            }
+        ));
+        jScrollPane2.setViewportView(tabla_paciente);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1150, 70));
+
+        tablaInternos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "PrimAp", "SegAp", "Habitacion", "Sala", "NombreSala"
+            }
+        ));
+        jScrollPane3.setViewportView(tablaInternos);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, -1, 140));
+
+        jLabel30.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel30.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel30.setText("Pacientes");
+        jPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 220, -1));
+
+        jTabbedPane1.addTab("+Pacientes+", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(cajaAp2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 110, -1));
+        jPanel2.add(cajaAp1D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Genero:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 420, 90, 30));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 90, 30));
 
         jLabel13.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("ID Doctor:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 90, 20));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 90, 20));
 
         jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Nombre:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 90, 60, 20));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 20));
 
         cajaID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaID2ActionPerformed(evt);
             }
         });
-        getContentPane().add(cajaID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 90, 40, -1));
+        jPanel2.add(cajaID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 40, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 210, 190, 30));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Psicologo/a", "Nutriologo/a", "Cirujano/a", "Geriatra", "Pediatra", "MedicoGeneral" }));
+        jPanel2.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 190, 30));
 
         jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Apellidos:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, 80, 20));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, 20));
+        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 120, -1));
 
-        jTextField8.setText("jTextField1");
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 290, 120, -1));
+        jLabel16.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Departamento:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 120, 30));
+
+        jLabel17.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Especializacion:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 120, 30));
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        jPanel2.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 160, -1));
+
+        jLabel18.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Consultorio:");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 120, 30));
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Psicologia", "Nutricion", "Medicina General", "Cirugia", "Geriatria", "Ginecologia", "Pediatria" }));
+        jPanel2.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 160, -1));
+
+        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel19.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Medicos");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 220, -1));
+        jPanel2.add(nombreDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, -1));
+
+        jScrollPane4.setAutoscrolls(true);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "IdDoctor", "Nombre", "Ap1", "Ap2", "Especializacion", "Consultorio", "Departamento", "Genero"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(7).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 730, 210));
+
+        jTabbedPane1.addTab("+Doctores+", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton8.setText("Crear Cita");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 90, -1));
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departamento", "Geriatria", "Psicologia", "Nutricion", "Geriatria", "Cirugia", "Medicina General", "Ginecologia" }));
+        jPanel3.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 173, 30));
+        jPanel3.add(cajaAp2p1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 110, -1));
+        jPanel3.add(cajaAp1p1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 110, -1));
+        jPanel3.add(cajaNp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 130, -1));
+
+        jLabel22.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Apellidos:");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 80, 20));
+
+        jLabel23.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("ID Paciente");
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 90, 20));
+
+        jLabel24.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText("Nombre:");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 60, 20));
+
+        cajaID1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaID1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cajaID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 40, -1));
+
+        jButton9.setText("Guardar");
+        jPanel3.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 90, -1));
+
+        jButton12.setText("Cancelar");
+        jPanel3.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 90, -1));
+
+        jButton14.setText("Eliminar");
+        jPanel3.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 90, -1));
+        jPanel3.add(cajaAp2D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 110, -1));
+        jPanel3.add(cajaAp1D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 110, -1));
+
+        nombreDoc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreDoc1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(nombreDoc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 130, -1));
+
+        jLabel25.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("ID Doctor:");
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 90, 20));
+
+        jLabel26.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel26.setText("Doctor:");
+        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 60, 20));
+
+        cajaID3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaID3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cajaID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 40, -1));
+
+        jLabel27.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setText("Departamento");
+        jPanel3.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 120, 20));
+
+        jLabel28.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setText("Apellidos:");
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 80, 20));
+
+        jLabel29.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel29.setText("Fecha");
+        jPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 80, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,30 +463,33 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 560, 560, 100));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1150, 90));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 170, -1));
 
-        jLabel16.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Departamento:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 350, 120, 30));
+        jTabbedPane1.addTab("-Citas-", jPanel3);
 
-        jLabel17.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Especializacion:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 120, 30));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 420, 160, -1));
+        jButton4.setText("Estadistica");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 170, -1));
 
-        jLabel18.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Consultorio:");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 120, 30));
+        jButton7.setText("Reporte Citas");
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 170, -1));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 350, 160, -1));
+        jButton10.setText("Reporte Doctores");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 170, -1));
 
         jButton11.setText("Reporte Pacientes");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -318,27 +497,21 @@ public class Main extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 170, -1));
+        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 170, -1));
 
-        jButton13.setText("Generar Cita");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 170, -1));
+        jButton2.setText("jButton2");
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
-        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel19.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Medicos");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 220, -1));
+        jButton6.setText("jButton6");
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
-        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel20.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Pacientes");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 220, -1));
+        jButton15.setText("jButton15");
+        jPanel4.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jTabbedPane1.addTab("+Estadistica+", jPanel4);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 710));
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,10 +519,6 @@ public class Main extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cajaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaIDActionPerformed
         // TODO add your handling code here:
@@ -375,9 +544,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void cajaID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaID1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaID1ActionPerformed
+
+    private void nombreDoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreDoc1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreDoc1ActionPerformed
+
+    private void cajaID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaID3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaID3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,31 +597,45 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cajaAp1D1;
+    private javax.swing.JTextField cajaAp1D2;
     private javax.swing.JTextField cajaAp1p;
+    private javax.swing.JTextField cajaAp1p1;
     private javax.swing.JTextField cajaAp2D;
+    private javax.swing.JTextField cajaAp2D1;
     private javax.swing.JTextField cajaAp2p;
+    private javax.swing.JTextField cajaAp2p1;
     private javax.swing.JTextField cajaID;
+    private javax.swing.JTextField cajaID1;
     private javax.swing.JTextField cajaID2;
+    private javax.swing.JTextField cajaID3;
     private javax.swing.JTextField cajaNp;
+    private javax.swing.JTextField cajaNp1;
     private javax.swing.JTextField cajacalle;
     private javax.swing.JTextField cajacol;
     private javax.swing.JTextField cajanum;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -454,20 +649,40 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField nombreDoc;
-    private javax.swing.JTable tablaPacientes;
+    private javax.swing.JTextField nombreDoc1;
+    private javax.swing.JTable tablaInternos;
+    private javax.swing.JTable tabla_paciente;
     private javax.swing.JTextField tel1;
     private javax.swing.JTextField tel2;
     private javax.swing.JTextField tel3;
