@@ -6,6 +6,7 @@
 package Controlador;
 
 import ConexionBD.ConexionBD;
+import Modelo.Doctor;
 import Modelo.Paciente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +59,7 @@ public class DoctorDAO {
                   " Estado = ?, " +
                   " Habitacion = ?, " +
                   " Genero = ?, " +
-                  "WHERE idPaciente = ?;";
+                  "WHERE idPa  ciente = ?;";
           try {
               PreparedStatement pstm = ConexionBD.getConnection().prepareStatement(sql);
               pstm.setString( 1, String.valueOf(p.getIdPaciente()));
@@ -100,28 +101,18 @@ public class DoctorDAO {
         
     }
       
-       public Paciente buscaPaciente(String filtro, String clave){
-        Paciente p = null;
+       public Doctor buscaDoctor(String filtro, String clave){
+        Doctor d = null;
         ResultSet rs;
         sql="";
-        sql="SELECT * FROM PACIENTE WHERE "+filtro+" = "+clave+";";
+        sql="SELECT * FROM doctor "+filtro+" = "+clave+";";
         try {
             PreparedStatement preparedStatement = ConexionBD.getConnection().prepareStatement(sql);
             rs = preparedStatement.executeQuery();
 
             rs.last();
-                p = new Paciente();
-                p.setIdPaciente(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setPrimAp(rs.getString(3));
-                p.setSegAp(rs.getString(4));
-                p.setColonia(rs.getString(5));
-                p.setCalle(rs.getString(6));
-                p.setNum(rs.getInt(7));
-                p.setTelefono(rs.getString(8));
-                p.setEstado(rs.getString(9));
-                p.setHabitacion(rs.getInt(10));
-                p.setGenero(rs.getString(11));
+                d = new Doctor();
+         
                 preparedStatement.close();
         }
         catch (SQLException e){
@@ -129,6 +120,6 @@ public class DoctorDAO {
 
         }
         
-        return p;
+        return d;
     }  
 }

@@ -8,9 +8,15 @@ package Controlador;
 import ConexionBD.ConexionBD;
 import Modelo.Citas;
 import Modelo.Paciente;
+import com.google.protobuf.TextFormat.ParseException;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,44 +29,39 @@ public class CitasDAO {
         boolean finalizo;
         try {
             try (PreparedStatement pstm = ConexionBD.getConnection().prepareStatement
-                ("INSERT INTO Cita (`Paciente`, `Doctor`, `Fecha`, `hora`, "
-                        + "`Consultorio`, `dept`) VALUES (?,?,?,?,?,?)")) {
+                ("INSERT INTO Cita (`paciente`, `doctor`, `fecha`, `hora`) VALUES (?,?,?,?)")) {
                 pstm.setInt(1,c.getPaciente());
                 pstm.setInt(2, c.getDoctor());
-                pstm.setDate(3, java.sql.Date.valueOf(c.getFecha()));
+                pstm.setDate(3,java.sql.Date.valueOf(c.getFecha()));
                 pstm.setString(4,c.getHora());
-                pstm.setInt(5,c.getConsul());
-                pstm.setInt(6, c.getDept());
                 pstm.executeUpdate();
                 finalizo = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"ERROR" ,
+                    "El Paciente no puede ser citado",JOptionPane.ERROR_MESSAGE);
+            //e.printStackTrace();
             finalizo = false;
         }
         return finalizo;
     }
     
-     public boolean ModificaPaciente(Citas c){
+     public boolean ModificaCita(Citas c){
           boolean actualizado;
-          String sql = "UPDATE Consulta SET " +
-                  " paciente = ?, " +
-                  " doctor = ?, " +
-                  " fecha = ?, " +
-                  " hora = ?, " +
-                  " consultorio = ?, " +
-                  " dept = ? "+
-                  "WHERE paciente = ?;";// and doctor= ?;";
+          String sql = "UPDATE cita SET " +
+                  " fecha = ? , " +
+                  " hora = ? " +
+                  " WHERE paciente =  ?  and doctor =  ? ;";// and doctor= ?;";
           try {
               PreparedStatement pstm = ConexionBD.getConnection().prepareStatement(sql);
-              pstm.setInt(1,c.getPaciente());
-                pstm.setInt(2, c.getDoctor());
-                pstm.setDate(3, java.sql.Date.valueOf(c.getFecha()));
-                pstm.setString(4,c.getHora());
-                pstm.setInt(5,c.getConsul());
-                pstm.setInt(6, c.getDept());
-                pstm.setInt(7,c.getPaciente());
-               // pstm.setInt(8,c.getDoctor());
+                pstm.setDate(1, java.sql.Date.valueOf(c.getFecha()));
+                //System.out.println("fechita:-- "+c.getFecha());
+                pstm.setString(2,c.getHora());
+                //System.out.println("hora:-- "+c.getHora());
+                pstm.setInt(3,c.getPaciente());
+                //System.out.println("paciente:-- "+c.getPaciente());
+                pstm.setInt(4,c.getDoctor());
+                //System.out.println("doctor:-- "+c.getDoctor());
               pstm.executeUpdate();
               actualizado = true;
               pstm.close();
@@ -72,7 +73,7 @@ public class CitasDAO {
     }
      
       public boolean Elimina(String filtro, String clave,String table){
-        sql = "DELETE FROM"+table+" WHERE "+filtro+" = "+clave+";";
+        sql = "DELETE FROM"+table+" WHERE "+filtro+ " = '"+clave+"';";
            boolean eliminado;
 	        try {
 	            PreparedStatement preparedStatement = ConexionBD.getConnection().prepareStatement(sql);
@@ -91,25 +92,27 @@ public class CitasDAO {
         Citas c = null;
         ResultSet rs;
         sql="";
-        sql="SELECT * FROM Cita WHERE "+filtro+" = "+clave+";";
+        sql="SELECT * FROM Cita WHERE "+filtro+" = '"+clave+"';";
         try {
             PreparedStatement preparedStatement = ConexionBD.getConnection().prepareStatement(sql);
             rs = preparedStatement.executeQuery();
-
             rs.last();
                 c = new Citas();
                 c.setPaciente(rs.getInt(1));
                 c.setDoctor(rs.getInt(2));
-                c.setFecha(String.valueOf(rs.getDate(3)));
+                c.setFecha(rs.getDate(3).toString());
                 c.setHora(rs.getString(4));
-                c.setConsul(rs.getInt(5));
-                c.setDept(rs.getInt(6));
         }
         catch (SQLException e){
-            e.printStackTrace();
-
+            //System.out.println("Errorsito aqui n.n  (¬_¬) / me lleva la verga ");
+            e.printStackTrace();           
         }
-        
         return c;
     }
+       public static void main(String args[]) {
+            CitasDAO p = new CitasDAO();
+            
+            Citas c = new Citas(5,5,"2019-12-12","11:45:AM");
+            System.out.println(p.ModificaCita(c));
+        }
 }

@@ -11,6 +11,7 @@ public class Doctor {
   private int Departamento;
   private String Genero;
 
+   public Doctor() {}
     public Doctor(int IdDoctor, String Nombre, String Ap1, String Ap2, String Especializacion, int Consultorio, int Departamento, String Genero) {
         this.IdDoctor = IdDoctor;
         this.Nombre = Nombre;
@@ -21,6 +22,10 @@ public class Doctor {
         this.Departamento = Departamento;
         this.Genero = Genero;
     }
+
+   
+
+  
 
     public int getIdDoctor() {
         return IdDoctor;
