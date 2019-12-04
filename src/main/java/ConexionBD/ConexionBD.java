@@ -22,7 +22,7 @@ public class ConexionBD {
  String usuario = "root";
  String password = "pepe";
   
- try{
+ try{ 
      Class.forName(driver);
      conn = DriverManager.getConnection(url, usuario, password);
      System.out.println("Se conecto OTRA PUTA VEZ ¬_¬");

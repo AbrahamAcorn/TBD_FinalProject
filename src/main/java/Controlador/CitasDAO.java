@@ -73,7 +73,7 @@ public class CitasDAO {
     }
      
       public boolean Elimina(String filtro, String clave,String table){
-        sql = "DELETE FROM"+table+" WHERE "+filtro+ " = '"+clave+"';";
+        sql = "DELETE FROM "+table+" WHERE "+filtro+ " = '"+clave+"';";
            boolean eliminado;
 	        try {
 	            PreparedStatement preparedStatement = ConexionBD.getConnection().prepareStatement(sql);

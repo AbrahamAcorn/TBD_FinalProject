@@ -5,6 +5,8 @@
  */
 package Vista;
 import Controlador.CitasDAO;
+import Controlador.DoctorDAO;
+import Controlador.ForGraphics;
 import Controlador.HabitacionDAO;
 import Controlador.PacienteDAO;
 import Modelo.Paciente;
@@ -16,6 +18,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 /**
  *
  * @author Abraham
@@ -29,6 +35,18 @@ public class Main extends javax.swing.JFrame {
         setResizable(false);
         //setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Images/iconmain.png")));
         initComponents();
+        DefaultPieDataset data = new DefaultPieDataset();
+ForGraphics fg=new ForGraphics();
+        data.setValue("Internado", fg.Cuenta("select count(idPaciente) from paciente where Estado = 'Internado';"));
+        data.setValue("De Alta", fg.Cuenta("select count(idPaciente) from paciente where Estado = 'De Alta';"));
+        data.setValue("Citado", fg.Cuenta("select count(idPaciente) from paciente where Estado= 'Citado';"));
+
+ JFreeChart chart = ChartFactory.createPieChart(
+         "Pacientes Registrados", 
+         data, true, true, false);
+        // Crear el Panel del Grafico con ChartPanel
+        ChartPanel chartPanel = new ChartPanel(chart);
+        jPanel8.add(chartPanel);
     }
     public void actualizarTabla(String sql, javax.swing.JTable tab){
 
@@ -98,15 +116,14 @@ public class Main extends javax.swing.JFrame {
         tablaInternos = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        cajaAp2D = new javax.swing.JTextField();
+        cajaAp2Dv = new javax.swing.JTextField();
         cajaAp1D1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         cajaID2 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        consultorio = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
@@ -116,20 +133,12 @@ public class Main extends javax.swing.JFrame {
         nombreDoc = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        addMedico = new javax.swing.JButton();
+        deleteMedico = new javax.swing.JButton();
+        updateMedico = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         crearCita = new javax.swing.JButton();
-        comboDep = new javax.swing.JComboBox<>();
         ap12citas = new javax.swing.JTextField();
         citasNamePac = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
@@ -145,7 +154,6 @@ public class Main extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         cajaID3 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -157,13 +165,23 @@ public class Main extends javax.swing.JFrame {
         ampm = new javax.swing.JComboBox<>();
         horas = new javax.swing.JComboBox<>();
         minutos = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(196, 226, 247));
         setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1170, 630));
+        setPreferredSize(new java.awt.Dimension(1200, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,13 +195,14 @@ public class Main extends javax.swing.JFrame {
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "De Alta", "Internado", "Revision", "Citado" }));
         jPanel1.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 130, -1));
 
+        addPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospital.png"))); // NOI18N
         addPaciente.setText("Añade Paciente");
         addPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPacienteActionPerformed(evt);
             }
         });
-        jPanel1.add(addPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 130, 30));
+        jPanel1.add(addPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 160, 40));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -195,18 +214,25 @@ public class Main extends javax.swing.JFrame {
         jLabel7.setText("Genero:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 60, 20));
 
+        editPac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         editPac.setText("Edita Paciente");
         editPac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editPacActionPerformed(evt);
             }
         });
-        jPanel1.add(editPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 130, 30));
+        jPanel1.add(editPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 160, 40));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("-");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 10, 20));
+
+        tel3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tel3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(tel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -262,13 +288,14 @@ public class Main extends javax.swing.JFrame {
         jLabel4.setText("Estado:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 60, 20));
 
+        deletePac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quitaMedico.png"))); // NOI18N
         deletePac.setText("Elimina Paciente");
         deletePac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletePacActionPerformed(evt);
             }
         });
-        jPanel1.add(deletePac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 130, 30));
+        jPanel1.add(deletePac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 160, 40));
         jPanel1.add(cajanum, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 50, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -325,13 +352,14 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("Direccion:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 80, 20));
 
+        darAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alta.png"))); // NOI18N
         darAlta.setText("Dar de Alta");
         darAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darAltaActionPerformed(evt);
             }
         });
-        jPanel1.add(darAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 130, -1));
+        jPanel1.add(darAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 160, 40));
 
         tabla_paciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -352,7 +380,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabla_paciente);
         actualizarTabla("SELECT*FROM Paciente;",tabla_paciente);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1150, 70));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1150, 160));
 
         tablaInternos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -379,13 +407,25 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("+Pacientes+", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(cajaAp2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 110, -1));
+
+        cajaAp2Dv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cajaAp2DvKeyTyped(evt);
+            }
+        });
+        jPanel2.add(cajaAp2Dv, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 110, -1));
+
+        cajaAp1D1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cajaAp1D1KeyTyped(evt);
+            }
+        });
         jPanel2.add(cajaAp1D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Genero:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 90, 30));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 90, 30));
 
         jLabel13.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -404,19 +444,16 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel2.add(cajaID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 40, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Psicologo/a", "Nutriologo/a", "Cirujano/a", "Geriatra", "Pediatra", "MedicoGeneral" }));
-        jPanel2.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 190, 30));
-
         jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Apellidos:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, 20));
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 120, -1));
+        jPanel2.add(consultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 120, -1));
 
         jLabel16.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Departamento:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 120, 30));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 120, 30));
 
         jLabel17.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -424,117 +461,116 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 120, 30));
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
-        jPanel2.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 160, -1));
+        jPanel2.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 160, -1));
 
         jLabel18.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Consultorio:");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 120, 30));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 120, 30));
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Psicologia", "Nutricion", "Medicina General", "Cirugia", "Geriatria", "Ginecologia", "Pediatria" }));
+        jComboBox6.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox6ItemStateChanged(evt);
+            }
+        });
         jComboBox6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jComboBox6MouseReleased(evt);
             }
         });
-        jPanel2.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 160, -1));
+        jPanel2.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 160, -1));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Medicos");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 220, -1));
+
+        nombreDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreDocActionPerformed(evt);
+            }
+        });
+        nombreDoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreDocKeyTyped(evt);
+            }
+        });
         jPanel2.add(nombreDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, -1));
 
         jScrollPane4.setAutoscrolls(true);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "IdDoctor", "Nombre", "Ap1", "Ap2", "Especializacion", "Consultorio", "Departamento", "Genero"
+                "IdDoctor", "Nombre", "Ap1", "Ap2", "Especializacion", "Consultorio", "Departamento", "Genero", "Nombre Departamento"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable2MouseReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable2);
-        actualizarTabla("SELECT*FROM doctor;",jTable2);
+        actualizarTabla("select*from docs_dept;",jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 730, 210));
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 1020, 210));
 
-        jButton1.setText("Añadir Medico");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, -1, -1));
-
-        jButton3.setText("Eliminar Medico");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/doctor.png"))); // NOI18N
+        addMedico.setText("Añadir Medico");
+        addMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addMedicoActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, -1, -1));
+        jPanel2.add(addMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 90, 160, -1));
 
-        jButton5.setText("Modificar Medico");
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, -1, -1));
+        deleteMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quitaMedico.png"))); // NOI18N
+        deleteMedico.setText("Eliminar Medico");
+        deleteMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMedicoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(deleteMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, 160, -1));
+
+        updateMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
+        updateMedico.setText("Modificar Medico");
+        updateMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMedicoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(updateMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 150, -1, -1));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 240, 30));
 
         jTabbedPane1.addTab("+Doctores+", jPanel2);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton4.setText("Estadistica");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 170, -1));
-
-        jButton7.setText("Reporte Citas");
-        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 170, -1));
-
-        jButton10.setText("Reporte Doctores");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 170, -1));
-
-        jButton11.setText("Reporte Pacientes");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 170, -1));
-
-        jButton2.setText("Reporte Internos");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
-
-        jButton6.setText("Grafica Ocupacion");
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-
-        jButton15.setText("Grafica pacientes");
-        jPanel4.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        jTabbedPane1.addTab("+Estadistica+", jPanel4);
-
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        crearCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/llamar.png"))); // NOI18N
         crearCita.setText("Crear Cita");
         crearCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearCitaActionPerformed(evt);
             }
         });
-        jPanel3.add(crearCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, -1));
-
-        comboDep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pediatria", "Psicologia", "Nutricion", "Geriatria", "Cirugia", "Medicina general", "Ginecologia" }));
-        jPanel3.add(comboDep, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 173, 30));
+        jPanel3.add(crearCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
 
         ap12citas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -570,50 +606,53 @@ public class Main extends javax.swing.JFrame {
                 citasidDocActionPerformed(evt);
             }
         });
-        jPanel3.add(citasidDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 40, -1));
+        jPanel3.add(citasidDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 40, -1));
 
+        guardarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
         guardarCita.setText("Guardar");
         guardarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarCitaActionPerformed(evt);
             }
         });
-        jPanel3.add(guardarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 90, -1));
+        jPanel3.add(guardarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 170, -1));
 
+        restablece.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelCita.png"))); // NOI18N
         restablece.setText("Cancelar");
         restablece.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 restableceActionPerformed(evt);
             }
         });
-        jPanel3.add(restablece, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 90, -1));
+        jPanel3.add(restablece, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, -1));
 
+        eliminaCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendar.png"))); // NOI18N
         eliminaCita.setText("Eliminar");
         eliminaCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminaCitaActionPerformed(evt);
             }
         });
-        jPanel3.add(eliminaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 90, -1));
-        jPanel3.add(cajaAp2D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 110, -1));
-        jPanel3.add(cajaAp1D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 110, -1));
+        jPanel3.add(eliminaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 170, -1));
+        jPanel3.add(cajaAp2D1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 110, -1));
+        jPanel3.add(cajaAp1D2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 110, -1));
 
         citasNameDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 citasNameDocActionPerformed(evt);
             }
         });
-        jPanel3.add(citasNameDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 130, -1));
+        jPanel3.add(citasNameDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 130, -1));
 
         jLabel25.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("ID Doctor:");
-        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 90, 20));
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 90, 20));
 
         jLabel26.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Doctor:");
-        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 60, 20));
+        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 60, 20));
 
         cajaID3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -622,15 +661,10 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel3.add(cajaID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 40, -1));
 
-        jLabel27.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Departamento");
-        jPanel3.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 120, 20));
-
         jLabel28.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Apellidos:");
-        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 80, 20));
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 80, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -651,12 +685,12 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1150, 90));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1150, 160));
 
         fecha.setDateFormatString("yyyy-MM-dd");
         fecha.setMaxSelectableDate(new java.util.Date(253370790065000L));
         fecha.setMinSelectableDate(new java.util.Date(-62135744335000L));
-        jPanel3.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 170, -1));
+        jPanel3.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 170, -1));
 
         cajaID4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -668,12 +702,12 @@ public class Main extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Fecha");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 80, 20));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 80, 20));
 
         jLabel33.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Hora");
-        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 80, 20));
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 80, 20));
 
         ap11citas2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -683,23 +717,102 @@ public class Main extends javax.swing.JFrame {
         jPanel3.add(ap11citas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 110, -1));
 
         ampm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PM", "AM" }));
-        jPanel3.add(ampm, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+        jPanel3.add(ampm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
 
         horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
-        jPanel3.add(horas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
+        jPanel3.add(horas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "15", "30", "45", " " }));
-        jPanel3.add(minutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+        jPanel3.add(minutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID Doctor", "Doctor", "Apeido Paterno", "Apeido Materno"
+            }
+        ));
+        actualizarTabla("Select IdDoctor, Nombre, Ap1 ,Ap2 from doctor;",jTable3);
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable3MouseReleased(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
+        jScrollPane5.setViewportView(jTable3);
+
+        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, 90));
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID Paciente", "Nombre", "Apeido", "Apeido Materno"
+            }
+        ));
+        actualizarTabla("SELECT idPaciente, nombre, primAp, segAp from paciente;",jTable4);
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable4MouseReleased(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTable4);
+
+        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, 90));
 
         jTabbedPane1.addTab("+Citas+", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton7.setText("Reporte Citas");
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 170, -1));
+
+        jButton10.setText("Reporte Doctores");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 170, -1));
+
+        jButton11.setText("Reporte Pacientes");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 170, -1));
+
+        jButton2.setText("Reporte Internos");
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 170, -1));
+
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+
+        DefaultPieDataset data2 = new DefaultPieDataset();
+        ForGraphics fg=new ForGraphics();
+        data2.setValue("Libre", fg.Cuenta(" select count(idHabitacion) from habitacion where Estado= 'Libre';"));
+        data2.setValue("Ocupado", fg.Cuenta("select count(idHabitacion) from habitacion where Estado='Ocupada';"));
+
+        JFreeChart chart2 = ChartFactory.createPieChart(
+            "Ocupacion",
+            data2, true, true, false);
+        // Crear el Panel del Grafico con ChartPanel
+        ChartPanel chartPanel2 = new ChartPanel(chart2);
+        jPanel5.add(chartPanel2);
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 500, 370));
+
+        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 500, 370));
+
+        jTabbedPane1.addTab("+Estadistica+", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 710));
         getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -180, -1, -1));
@@ -741,10 +854,6 @@ if(d.buscaPaciente("idPaciente", String.valueOf(pac)).getIdPaciente()!=pac && d.
         // TODO add your handling code here:
     }//GEN-LAST:event_cajaIDActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -785,7 +894,6 @@ if(c.buscaCita("paciente", String.valueOf(pac)).getPaciente()!=pac){
   actualizarTabla("SELECT*FROM citas_full;",jTable1);
   actualizarTabla("SELECT*FROM paciente;",tabla_paciente);
 
-comboDep.setSelectedIndex(0);
 cajaID4.setText("");
 minutos.setSelectedIndex(0);
 horas.setSelectedIndex(0);
@@ -813,9 +921,25 @@ citasidDoc.setText("");
         actualizarTabla("Select*From Paciente where idPaciente= "+cajaID.getText(),tabla_paciente);
     }//GEN-LAST:event_cajaID3ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void deleteMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+            PacienteDAO p = new PacienteDAO();
+         CitasDAO c=new CitasDAO();
+        try{
+            int pac= Integer.parseInt(cajaID2.getText());
+            if(c.Elimina("IdDoctor", String.valueOf(pac), "Doctor")){
+                p.QuitaCita(pac);
+                            JOptionPane.showMessageDialog(rootPane, "Se elimino el registro", null, JOptionPane.INFORMATION_MESSAGE);
+                             actualizarTabla("SELECT*FROM docs_dept;",jTable2);
+                             
+            }else
+                            JOptionPane.showMessageDialog(rootPane, "No se pudo eliminar el registro", null, JOptionPane.INFORMATION_MESSAGE);
+  
+        }catch (NumberFormatException e2){
+            JOptionPane.showMessageDialog(rootPane, "Revisa el Campo ID Doctor", null, JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_deleteMedicoActionPerformed
 
     private void cajaID4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaID4ActionPerformed
         // TODO add your handling code here:
@@ -988,6 +1112,11 @@ if(d.buscaPaciente("idPaciente", String.valueOf(pac)).getIdPaciente()==pac){
         
         //DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
         //String fecha2=f.format(fecha);
+        cajaID4.setText("");
+minutos.setSelectedIndex(0);
+horas.setSelectedIndex(0);
+ampm.setSelectedIndex(0);
+citasidDoc.setText("");
     }//GEN-LAST:event_restableceActionPerformed
 
     private void ap11citas2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ap11citas2KeyTyped
@@ -1018,7 +1147,6 @@ if((c.buscaCita("paciente", String.valueOf(pac)).getPaciente()==pac && c.buscaCi
   actualizarTabla("SELECT*FROM citas_full;",jTable1);
   actualizarTabla("SELECT*FROM paciente;",tabla_paciente);
 
-comboDep.setSelectedIndex(0);
 cajaID4.setText("");
 minutos.setSelectedIndex(0);
 horas.setSelectedIndex(0);
@@ -1060,10 +1188,9 @@ citasidDoc.setText("");
         cajaID4.setText(jTable1.getModel().getValueAt(t, 9).toString());
         ap11citas2.setText(jTable1.getModel().getValueAt(t, 11).toString());
         ap12citas.setText(jTable1.getModel().getValueAt(t, 12).toString());
-        jComboBox1.setSelectedItem(jTable1.getModel().getValueAt(t, 3).toString());
-        //horas.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(0,2));
-        //minutos.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(4,5));
-        //ampm.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(7,8));
+        horas.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(0,2));
+        minutos.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(4,5));
+        ampm.setSelectedItem(jTable1.getModel().getValueAt(t, 1).toString().substring(7,8));
         citasNameDoc.setText(jTable1.getModel().getValueAt(t, 6).toString());
         citasidDoc.setText(jTable1.getModel().getValueAt(t, 5).toString());
         cajaAp1D2.setText(jTable1.getModel().getValueAt(t, 7).toString());
@@ -1072,24 +1199,145 @@ citasidDoc.setText("");
         
     }//GEN-LAST:event_jTable1MouseReleased
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jTable4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseReleased
         // TODO add your handling code here:
-        if(jComboBox1.getSelectedItem().toString().equals("1")){
-            comboDep.setSelectedItem("Pediatria");
-        }else if(jComboBox1.getSelectedItem().toString().equals("2")){
-            comboDep.setSelectedItem("Psicologia");
-        }else if(jComboBox1.getSelectedItem().toString().equals("3")){
-            comboDep.setSelectedItem("Nutricion");
-        }else if(jComboBox1.getSelectedItem().toString().equals("4")){
-            comboDep.setSelectedItem("Geriatria");
-        }else if(jComboBox1.getSelectedItem().toString().equals("5")){
-            comboDep.setSelectedItem("Cirujia");
-        }else if(jComboBox1.getSelectedItem().toString().equals("6")){
-            comboDep.setSelectedItem("Medicina Gneral");
-        }else if(jComboBox1.getSelectedItem().toString().equals("7")){
-            comboDep.setSelectedItem("Cirugia");
-        }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        int t= jTable4.getSelectedRow();
+        citasNamePac.setText(jTable4.getModel().getValueAt(t, 1).toString());
+        cajaID4.setText(jTable4.getModel().getValueAt(t, 0).toString());
+        ap11citas2.setText(jTable4.getModel().getValueAt(t, 2).toString());
+        ap12citas.setText(jTable4.getModel().getValueAt(t, 3).toString());
+        
+    }//GEN-LAST:event_jTable4MouseReleased
+
+    private void jTable3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseReleased
+        // TODO add your handling code here:
+        int t= jTable3.getSelectedRow();
+        citasNameDoc.setText(jTable3.getModel().getValueAt(t, 1).toString());
+        citasidDoc.setText(jTable3.getModel().getValueAt(t, 0).toString());
+        cajaAp1D2.setText(jTable3.getModel().getValueAt(t, 2).toString());
+        cajaAp2D1.setText(jTable3.getModel().getValueAt(t, 3).toString());
+    }//GEN-LAST:event_jTable3MouseReleased
+
+    private void tel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tel3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tel3ActionPerformed
+
+    private void jTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseReleased
+        // TODO add your handling code here:
+        int t= jTable2.getSelectedRow();
+        cajaID2.setText(jTable2.getModel().getValueAt(t,0).toString());
+        nombreDoc.setText(jTable2.getModel().getValueAt(t,1).toString());
+        cajaAp1D1.setText(jTable2.getModel().getValueAt(t,2).toString());
+        cajaAp2Dv.setText(jTable2.getModel().getValueAt(t,3).toString());
+        jTextField1.setText(jTable2.getModel().getValueAt(t,4).toString());
+        consultorio.setText(jTable2.getModel().getValueAt(t,5).toString());
+        jComboBox6.setSelectedItem(jTable2.getModel().getValueAt(t,8).toString());
+         jComboBox5.setSelectedItem(jTable2.getModel().getValueAt(t,7).toString());
+        
+    }//GEN-LAST:event_jTable2MouseReleased
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void nombreDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreDocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreDocActionPerformed
+
+    private void nombreDocKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreDocKeyTyped
+        // TODO add your handling code here:
+         actualizarTabla("Select*From docs_dept where Nombre like '%"+nombreDoc.getText()+"%'",jTable2);
+    }//GEN-LAST:event_nombreDocKeyTyped
+
+    private void cajaAp1D1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaAp1D1KeyTyped
+        // TODO add your handling code here:
+         actualizarTabla("Select*From docs_dept where Ap1 like '%"+cajaAp2D1.getText()+"%'",jTable2);
+    }//GEN-LAST:event_cajaAp1D1KeyTyped
+
+    private void cajaAp2DvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaAp2DvKeyTyped
+        // TODO add your handling code here:
+         actualizarTabla("Select*From docs_dept where Ap2 like '%"+cajaAp2Dv.getText()+"%'",jTable2);
+    }//GEN-LAST:event_cajaAp2DvKeyTyped
+
+    private void jComboBox6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox6ItemStateChanged
+        // TODO add your handling code here:;
+    }//GEN-LAST:event_jComboBox6ItemStateChanged
+
+    private void addMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedicoActionPerformed
+        // TODO add your handling code here:
+        try{
+         int id = Integer.parseInt(cajaID2.getText());
+        String name=nombreDoc.getText();
+        String  ap= cajaAp1D1.getText();
+        String ap2 = cajaAp2Dv.getText();
+       String esp = jTextField1.getText();
+        int con = Integer.parseInt(consultorio.getText());
+        int dep = jComboBox6.getSelectedIndex()+1;
+         String gen = jComboBox5.getSelectedItem().toString();
+            DoctorDAO d = new DoctorDAO();
+            if(d.buscaDoctor("IdDoctor", String.valueOf(id)) == null && d.buscaDoctor("nombre", name)==null){
+                Doctor p = new Doctor(id,name,ap,ap2,esp,con,dep,gen);
+                if(d.agregaDoctor(p)){
+                    JOptionPane.showMessageDialog(rootPane, "El registro se añadió correctamente", null, JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane, "El registro NO se añadio", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                 }
+  actualizarTabla("SELECT*FROM docs_dept;",jTable2);
+   nombreDoc.setText("");
+        cajaAp1D1.setText("");
+       cajaAp2Dv.setText("");
+       jTextField1.setText("");
+       consultorio.setText("");
+        jComboBox6.setSelectedIndex(0);
+        jComboBox5.setSelectedIndex(0);
+
+}else{
+     JOptionPane.showMessageDialog(rootPane, "Ya existe un registro con esos datos", "INFO", JOptionPane.INFORMATION_MESSAGE);
+}
+}catch (NumberFormatException e2){
+    JOptionPane.showMessageDialog(rootPane, " Revisa Los Campos", null, JOptionPane.INFORMATION_MESSAGE);
+}  
+         
+        
+    }//GEN-LAST:event_addMedicoActionPerformed
+
+    private void updateMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMedicoActionPerformed
+        // TODO add your handling code here:
+               try{
+         int id = Integer.parseInt(cajaID2.getText());
+        String name=nombreDoc.getText();
+        String  ap= cajaAp1D1.getText();
+        String ap2 = cajaAp2Dv.getText();
+       String esp = jTextField1.getText();
+        int con = Integer.parseInt(consultorio.getText());
+        int dep = jComboBox6.getSelectedIndex();
+        dep=dep+1;
+         String gen = jComboBox5.getSelectedItem().toString();
+            DoctorDAO d = new DoctorDAO();
+            if(d.buscaDoctor("IdDoctor", String.valueOf(id)) == null && d.buscaDoctor("nombre", name)==null){
+                Doctor p = new Doctor(id,name,ap,ap2,esp,con,dep,gen);
+                if(d.ModificaDoctor(p)){
+                    JOptionPane.showMessageDialog(rootPane, "El registro se añadió correctamente", null, JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane, "El registro NO se añadio", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                 }
+  actualizarTabla("SELECT*FROM docs_dept;",jTable2);
+   nombreDoc.setText("");
+        cajaAp1D1.setText("");
+       cajaAp2Dv.setText("");
+       jTextField1.setText("");
+       consultorio.setText("");
+        jComboBox6.setSelectedIndex(0);
+        jComboBox5.setSelectedIndex(0);
+
+}else{
+     JOptionPane.showMessageDialog(rootPane, "Ya existe un registro con esos datos", "INFO", JOptionPane.INFORMATION_MESSAGE);
+}
+}catch (NumberFormatException e2){
+    JOptionPane.showMessageDialog(rootPane, " Revisa Los Campos", null, JOptionPane.INFORMATION_MESSAGE);
+}  
+         
+    }//GEN-LAST:event_updateMedicoActionPerformed
     
     
     /**
@@ -1128,6 +1376,7 @@ citasidDoc.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addMedico;
     private javax.swing.JButton addPaciente;
     private javax.swing.JComboBox<String> ampm;
     private javax.swing.JTextField ap11citas2;
@@ -1136,8 +1385,8 @@ citasidDoc.setText("");
     private javax.swing.JTextField ap2p;
     private javax.swing.JTextField cajaAp1D1;
     private javax.swing.JTextField cajaAp1D2;
-    private javax.swing.JTextField cajaAp2D;
     private javax.swing.JTextField cajaAp2D1;
+    private javax.swing.JTextField cajaAp2Dv;
     private javax.swing.JTextField cajaID;
     private javax.swing.JTextField cajaID2;
     private javax.swing.JTextField cajaID3;
@@ -1151,9 +1400,10 @@ citasidDoc.setText("");
     private javax.swing.JTextField citasidDoc;
     private javax.swing.JComboBox<String> combo1;
     private javax.swing.JComboBox<String> combo2;
-    private javax.swing.JComboBox<String> comboDep;
+    private javax.swing.JTextField consultorio;
     private javax.swing.JButton crearCita;
     private javax.swing.JButton darAlta;
+    private javax.swing.JButton deleteMedico;
     private javax.swing.JButton deletePac;
     private javax.swing.JButton editPac;
     private javax.swing.JButton eliminaCita;
@@ -1161,19 +1411,11 @@ citasidDoc.setText("");
     private javax.swing.JButton guardarCita;
     private javax.swing.JTextField habitbox;
     private javax.swing.JComboBox<String> horas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel1;
@@ -1195,7 +1437,6 @@ citasidDoc.setText("");
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1211,14 +1452,20 @@ citasidDoc.setText("");
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> minutos;
     private javax.swing.JTextField nombreDoc;
     private javax.swing.JButton restablece;
@@ -1227,5 +1474,6 @@ citasidDoc.setText("");
     private javax.swing.JTextField tel1;
     private javax.swing.JTextField tel2;
     private javax.swing.JTextField tel3;
+    private javax.swing.JButton updateMedico;
     // End of variables declaration//GEN-END:variables
 }
